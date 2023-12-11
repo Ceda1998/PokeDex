@@ -47,3 +47,12 @@ body {
     text-align: center;
 }
 
+#pokemonImg {
+    object-fit: cover;
+    transition: transform .2s;
+}
+
+#pokemonImg:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
