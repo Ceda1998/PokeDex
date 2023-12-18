@@ -1,4 +1,115 @@
-body {
-  margin: 0;
+@font-face {
+  font-family: roboto;
+  src: url(./fonts/Roboto-Regular.ttf);
 }
 
+body {
+  margin: 0;
+  font-family: roboto;
+}
+
+/* navbar */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #FA6555;
+}
+
+.imgAndHeadline {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pokeballImg {
+  height: 34px;
+}
+
+.searchbar {
+  margin-right: 10px;
+}
+
+form {
+  display: flex;
+}
+
+#searchField {
+  height: 30px;
+  border: 1px solid grey;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+#searchButton {
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  border: 1px solid grey;
+}
+
+#searchButton:hover {
+  cursor: pointer;
+}
+
+/* render-section */
+
+#render_container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.pokeInfoCard {
+  height: 250px;
+  width: 350px;
+  background-color: #FA6555;
+  border-radius: 20px;
+}
+
+.pokeInfoCard:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+#PokeName {
+  margin-left: 10px;
+}
+
+#PokeType {
+  color: white;
+  margin-left: 10px;
+}
+
+#PokeWeight {
+  color: white;
+  margin-left: 10px;
+}
+
+.containerForPokeImg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#pokemonImg {
+  height: 210px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.infoCardGrey {
+  margin-left: 10px;
+  text-align: center;
+  height: 20px;
+  width: 100px;
+  border-radius: 12px;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.288);
+  
+}

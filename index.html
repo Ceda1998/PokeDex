@@ -6,10 +6,23 @@
     <title>PokeDex</title>
     <link rel="icon" type="image/x-icon" href="./img/pokeball.png" />
     <link rel="stylesheet" href="style.css" />
-    
   </head>
-  <body  onload="loadPokemon()" id="body">
-  
-  <script src="script.js" defer></script>
+  <body onload="loadPokeCards()" id="body">
+    <nav>
+      <div class="imgAndHeadline">
+        <img src="./img/pokeball.png" alt="pokeball" class="pokeballImg" />
+        <h1>PokeDex</h1>
+      </div>
+      <form class="searchbar">
+        <input type="text" required id="searchField" />
+        <button id="searchButton">Search</button>
+      </form>
+    </nav>
+
+    <div id="render_container">
+     
+    </div>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
