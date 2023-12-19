@@ -38,38 +38,7 @@ function colorOfInfoCard(index) {
   let smallPokeCard = document.getElementsByClassName('smallPokeCard')[index - 1];
   let pokemonType = currentPokemon["types"]["0"]["type"]["name"];
   let backgroundColor = colors[pokemonType] || colors['default'];
-  if (pokemonType == 'grass') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  } else {
-    smallPokeCard.style.backgroundColor = colors['default'];
-  }
-  if (pokemonType == 'fire') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'water') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'electric') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'normal') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'poison') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'ground') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'rock') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'ice') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
-  if (pokemonType == 'ghost') {
-    smallPokeCard.style.backgroundColor = backgroundColor;
-  }
+  smallPokeCard.style.backgroundColor = backgroundColor;
 }
 
 // renderfunctions
