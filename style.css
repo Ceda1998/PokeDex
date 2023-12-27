@@ -61,7 +61,7 @@ form {
   height: 100vh;
   width: 100%;
   display: flex;
-  margin: 10px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -112,5 +112,38 @@ form {
   border-radius: 12px;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.288);
-  
+}
+
+/* big Info Container */
+
+.renderBigInfo_container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.bigInfo_Container {
+  position: absolute;
+  top: 200px;
+  background-color: red;
+  width: 500px;
+  height: 700px;
+  border-radius: 20px;
+}
+
+.bigInfo_Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokeStatsHeader {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pokeImgBigInfo {
+  height: 300px;
+  object-fit: cover;
 }
