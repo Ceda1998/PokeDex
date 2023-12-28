@@ -25,6 +25,7 @@ async function loadPokemon() {
 }
 
 async function loadPokeCards() {
+  pokemonId = 1;
   for (let i = 1; i <= MAX_POKEMON; i++) {
     let pkm = await loadPokemon(i);
     pokemonId++;
@@ -33,6 +34,7 @@ async function loadPokeCards() {
     renderContainer.innerHTML += renderPokeInfoCard(i);
     colorOfInfoCard(i);
   }
+  
 }
 
 function colorOfInfoCard(index) {
@@ -52,9 +54,23 @@ async function openBigInfoCard(i) {
   let pokemon = allPokemon[i];
   let renderContainer = document.getElementById("render_container");
   renderContainer.innerHTML = renderbigInfoCard(pokemon);
+  aboutInformation(pokemon);
 }
 
+function closeBigInfoCard(event) {
+  if (event) event.stopPropagation();
 
+  let element = document.getElementById('closingContainer');
+  element.style.display = 'none';
+  loadPokeCards();
+}
+
+// pokemonInformation functions
+
+function aboutInformation(pokemon) {
+  let infoContainer = document.getElementById('renderInformations');
+  infoContainer.innerHTML = renderAboutInformation(pokemon);
+}
 
 // renderfunctions
 
@@ -73,22 +89,36 @@ function renderPokeInfoCard(i) {
 </div>`;
 }
 
- function renderbigInfoCard(pokemon) {
+function renderbigInfoCard(pokemon) {
   return `
-  <div class="renderBigInfo_container">
-        <div class="bigInfo_Container">
+  <div class="renderBigInfo_container" id="closingContainer" onclick="closeBigInfoCard(event)">
+        <div class="bigInfo_Container" onclick="event.stopPropagation()">
           <img src="${pokemon.sprites.front_shiny}" alt="pokemon" class="pokeImgBigInfo">
         <div class="pokemonInfoContainer">
           <div class="pokeStatsHeader">
-            <div id="about">
+            <div id="about" onclick="aboutInformation(${pokemon})">
               <h2>About</h2>
             </div>
-            <div id="BaseStats">
+            <div id="BaseStats" onclick="BaseStatsInformation()">
               <h2>BaseStats</h2>
             </div>
+          </div>
+          <div id="renderInformations">
           </div>
         </div>
         </div>
       </div>
+  `;
+}
+
+function renderAboutInformation(pokemon) {
+  
+  console.log(pokemon);
+  return `
+  <div class="aboutInformation">
+   <div class="infosContainer"><p class="infoHeadline">Name:</p> <p class="infos">${pokemon.name}</p></div>
+   <div class="infosContainer"><p class="infoHeadline">Type:</p> <p class="infos">${pokemon.types[0].type.name}</p></div>
+   <div class="infosContainer"><p class="infoHeadline">Weight:</p><p class="infos">${pokemon.weight} kg </p></div>
+  </div>
   `;
 }

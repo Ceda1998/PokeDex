@@ -117,25 +117,29 @@ form {
 /* big Info Container */
 
 .renderBigInfo_container {
-  position: absolute;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100vh;
+  background-image: url(./img/pokeBackground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bigInfo_Container {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
   top: 200px;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.8);
   width: 500px;
   height: 700px;
   border-radius: 20px;
-}
-
-.bigInfo_Container {
-  display: flex;
-  flex-direction: column;
+  color: white;
 }
 
 .pokeStatsHeader {
@@ -146,4 +150,60 @@ form {
 .pokeImgBigInfo {
   height: 300px;
   object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#about:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#BaseStats:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.aboutInformation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.infosContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  background-color: rgba(247, 247, 247, 0.5);
+  border-radius: 20px;
+  width: 200px;
+}
+
+.infoHeadline {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.infos {
+  font-size: 16px;
+}
+
+/* responsive */
+
+@media (max-width: 550px) {
+  .bigInfo_Container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    top: 200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 300px;
+    height: 700px;
+    border-radius: 20px;
+    color: white;
+  }
 }
