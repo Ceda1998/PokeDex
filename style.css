@@ -16,7 +16,7 @@ nav {
   align-items: center;
   height: 100px;
   width: 100%;
-  background-color: #FA6555;
+  background-color: #fa6555;
 }
 
 .imgAndHeadline {
@@ -68,7 +68,7 @@ form {
 .pokeInfoCard {
   height: 250px;
   width: 350px;
-  background-color: #FA6555;
+  background-color: #fa6555;
   border-radius: 20px;
   margin: 10px;
 }
@@ -191,6 +191,47 @@ form {
   font-size: 16px;
 }
 
+#baseStatsInfo {
+  width: 200px;
+  height: 20px;
+  margin-top: 5px;
+  background-color: rgba(247, 247, 247, 0.5);
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.baseStatsInfo_Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#baseStatsInfo {
+  width: 50%;
+}
+
+#percentBar {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 12px;
+  
+}
+
+.infoBar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+}
+
+.infoText {
+  font-size: 18px;
+  font-weight: bold;
+  width: 50%;
+}
+
 /* responsive */
 
 @media (max-width: 550px) {
@@ -199,11 +240,27 @@ form {
     display: flex;
     flex-direction: column;
     z-index: 999;
-    top: 200px;
+    top: 20px;
     background-color: rgba(0, 0, 0, 0.8);
-    width: 300px;
+    width: 320px;
     height: 700px;
     border-radius: 20px;
     color: white;
+  }
+  .renderBigInfo_container {
+    overflow: auto;
+  }
+  #baseStatsInfo {
+    width: 200px;
+    height: 20px;
+    margin-top: 10px;
+    background-color: rgba(247, 247, 247, 0.5);
+    border-radius: 12px;
+    border: 1px solid black;
+    align-items: center;
+  }
+  .infoText {
+    font-size: 14px;
+    font-weight: bold;
   }
 }
