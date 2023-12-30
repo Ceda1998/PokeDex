@@ -3,7 +3,6 @@ let pokemonId = 1;
 let allPokemon = [];
 let allPokemonNames = [];
 let currentSearchResults = [];
-var regExp = /[a-zA-Z]/g;
 
 let colors = {
   grass: "#46D1B1",
