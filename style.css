@@ -39,10 +39,11 @@ form {
 }
 
 #searchField {
-  height: 30px;
+  height: 40px;
+  width: 200px;
   border: 1px solid grey;
-  border-bottom-left-radius: 12px;
-  border-top-left-radius: 12px;
+  border-radius: 14px;
+  margin-right: 20px;
 }
 
 #searchButton {
@@ -215,7 +216,6 @@ form {
   height: 100%;
   background-color: #4caf50;
   border-radius: 12px;
-  
 }
 
 .infoBar {
@@ -262,5 +262,15 @@ form {
   .infoText {
     font-size: 14px;
     font-weight: bold;
+  }
+  #searchField {
+    height: 30px;
+    width: 170px;
+    border: 1px solid grey;
+    border-radius: 14px;
+    margin-right: 10px;
+  }
+  h1 {
+    font-size: 18px;
   }
 }

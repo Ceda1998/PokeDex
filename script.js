@@ -1,7 +1,8 @@
-const MAX_POKEMON = 5;
-let currentPokemon;
+const MAX_POKEMON = 151;
 let pokemonId = 1;
 let allPokemon = [];
+let allPokemonNames = [];
+let currentSearchResults = [];
 var regExp = /[a-zA-Z]/g;
 
 let colors = {
@@ -18,6 +19,8 @@ let colors = {
   default: "#3d3d3d",
 };
 
+// fetch Data
+
 async function loadPokemon() {
   let url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
   let response = await fetch(url);
@@ -26,29 +29,60 @@ async function loadPokemon() {
 
 async function loadPokeCards() {
   pokemonId = 1;
-  for (let i = 1; i <= MAX_POKEMON; i++) {
-    let pkm = await loadPokemon(i);
+  for (let i = 0; i <= MAX_POKEMON; i++) {
+    let pkm = await loadPokemon();
     pokemonId++;
     allPokemon[i] = pkm;
+    allPokemonNames[i] = pkm.name;
     let renderContainer = document.getElementById("render_container");
     renderContainer.innerHTML += renderPokeInfoCard(i);
     colorOfInfoCard(i);
   }
 }
 
+// set Color
+
 function colorOfInfoCard(index) {
-  let smallPokeCard =
-    document.getElementsByClassName("smallPokeCard")[index - 1];
+  let smallPokeCard = document.getElementsByClassName("smallPokeCard")[index];
   let pokemonType = allPokemon[index].types[0].type.name;
   let backgroundColor = colors[pokemonType] || colors["default"];
   smallPokeCard.style.backgroundColor = backgroundColor;
 }
 
-function searchPokemon(currentPokemon) {
-  let searchingPokemon = currentPokemon["name"];
-  console.log(searchingPokemon);
-  let search = searchingPokemon.find();
+// searchfunction
+
+let searchInput = document.getElementById("searchField");
+searchInput.addEventListener("input", (searchWhileTyping) => {
+  search_term = searchWhileTyping.target.value.toLowerCase();
+  let searchResults = allPokemonNames.filter((pokemonName) =>
+    pokemonName.toLowerCase().includes(search_term)
+  );
+
+  console.log(searchResults);
+  showSearchResults();
+});
+
+function showSearchResults() {
+  let searchField = document.getElementById("searchField").value;
+  let renderContainer = document.getElementById("render_container");
+  renderContainer.innerHTML = "";
+
+  if (searchField == 0) {
+    loadPokeCards();
+  } else {
+    const filteredPokemon = allPokemon.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchField)
+    );
+
+    filteredPokemon.forEach((pokemon, index) => {
+      const pokemonIndex = allPokemon.findIndex((currentPokemonIndex) => currentPokemonIndex.name === pokemon.name);
+      renderContainer.innerHTML += renderPokeInfoCard(pokemonIndex);
+      colorOfInfoCard(index);
+    });
+  }
 }
+
+// open and close Cards
 
 async function openBigInfoCard(i) {
   let renderContainer = document.getElementById("render_container");
@@ -82,6 +116,7 @@ function baseStatsInformation(i) {
 
 function renderPokeInfoCard(i) {
   let pokemon = allPokemon[i];
+
   return `
     <div class="pokeInfoCard smallPokeCard" onclick="openBigInfoCard(${i})">
       <h1 id="PokeName">${pokemon.name}</h1>
