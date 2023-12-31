@@ -111,6 +111,9 @@ function closeBigInfoCard(event) {
 
   let element = document.getElementById("closingContainer");
   element.style.display = "none";
+  pokemonId = 1;
+    allPokemon = [];
+    allPokemonNames = [];
   loadPokeCards();
 }
 
