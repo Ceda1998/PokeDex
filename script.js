@@ -1,4 +1,4 @@
-let MAX_POKEMON = 5;
+let MAX_POKEMON = 20;
 let pokemonId = 1;
 let allPokemon = [];
 let allPokemonNames = [];
@@ -80,7 +80,10 @@ function showSearchResults() {
   let renderContainer = document.getElementById("render_container");
   renderContainer.innerHTML = "";
 
-  if (searchField == 0) {
+  if (searchField === "") {
+    pokemonId = 1;
+    allPokemon = [];
+    allPokemonNames = [];
     loadPokeCards();
   } else {
     const filteredPokemon = allPokemon.filter((pokemon) =>
