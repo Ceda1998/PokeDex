@@ -232,6 +232,39 @@ form {
   width: 50%;
 }
 
+/* load more section */
+#allContent {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 90%;
+  bottom: 0;
+  margin-top: 10px;
+}
+
+.loadMore_container {
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+}
+
+#loadMoreButton {
+  height: 50px;
+  width: 150px;
+  background-color: #fa6555;
+  color: black;
+  font-weight: bold;
+  border-radius: 14px;
+}
+
+#loadMoreButton:hover {
+  background-color: #ff8577;
+  cursor: pointer;
+}
+
 /* responsive */
 
 @media (max-width: 550px) {

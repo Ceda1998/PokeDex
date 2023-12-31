@@ -1,8 +1,8 @@
-const MAX_POKEMON = 151;
+let MAX_POKEMON = 5;
 let pokemonId = 1;
 let allPokemon = [];
 let allPokemonNames = [];
-let currentSearchResults = [];
+
 
 let colors = {
   grass: "#46D1B1",
@@ -27,18 +27,25 @@ async function loadPokemon() {
 }
 
 async function loadPokeCards() {
-  pokemonId = 1;
-  for (let i = 0; i <= MAX_POKEMON; i++) {
+  let startIndex = allPokemon.length;
+  for (let i = startIndex; i <= MAX_POKEMON; i++) {
     let pkm = await loadPokemon();
     pokemonId++;
     allPokemon[i] = pkm;
     allPokemonNames[i] = pkm.name;
-    let renderContainer = document.getElementById("render_container");
+    let renderContainer = document.getElementById('render_container');
     renderContainer.innerHTML += renderPokeInfoCard(i);
     colorOfInfoCard(i);
   }
+  addLoadMoreButton();
 }
 
+async function addLoadMoreButton() {
+  await loadPokemon();
+  let renderContainer = document.getElementById("allContent");
+  renderContainer.innerHTML = '';
+  renderContainer.innerHTML += renderLoadMoreButton();
+}
 // set Color
 
 function colorOfInfoCard(index) {
@@ -46,6 +53,13 @@ function colorOfInfoCard(index) {
   let pokemonType = allPokemon[index].types[0].type.name;
   let backgroundColor = colors[pokemonType] || colors["default"];
   smallPokeCard.style.backgroundColor = backgroundColor;
+}
+
+// morePokemon
+
+function loadMorePokemon() {
+   MAX_POKEMON += 20;
+   loadPokeCards();
 }
 
 // searchfunction
@@ -126,7 +140,8 @@ function renderPokeInfoCard(i) {
     </div>
     <img src="${pokemon.sprites.front_shiny}" alt="pokemonIMG" id="pokemonImg">
   </div>
-</div>`;
+</div>
+`;
 }
 
 function renderbigInfoCard(i) {
@@ -205,5 +220,13 @@ function renderBaseStats(pokemon) {
   </div>
   </div>
   </div>
+  `;
+}
+
+function renderLoadMoreButton() {
+  return `
+  <div class="loadMore_container">
+      <button id="loadMoreButton" onclick="loadMorePokemon()">Load More</button>
+    </div>
   `;
 }
